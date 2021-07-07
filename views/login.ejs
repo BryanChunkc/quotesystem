@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login page</title>
+    <style>
+      * {
+        text-align: center;
+        padding: 0%;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center; font-size: 50px">
+      Welcome to Quotes System
+    </h1>
+    <h2>Quotes:</h2>
+    <% if (quotes.length>0) {%>
+    <ul class="quotes">
+      <% for(var i = 0; i < quotes.length; i++) {%>
+      <li class="quote">
+        <a href="/quoteinfo/<%= quotes[i]._id %>">Quote no.<%= i+1 %></a>
+      </li>
+      <% } %>
+    </ul>
+    <%}else{%>
+    <h4 style="color: red">No quotes yet, log in to insert!</h4>
+    <%}%>
+    <br />
+    <div style="border: 3px solid black; padding: 20px">
+      <h2>Login to add quotes!</h2>
+      <form action="/logined" method="POST">
+        <input type="text" placeholder="Username" name="username" />
+        <input type="text" placeholder="Password" name="pw" />
+        <button type="submit">Login</button>
+      </form>
+      <h4>Wanna add quotes?<a href="/signup">Sign up!</a></h4>
+    </div>
+  </body>
+</html>

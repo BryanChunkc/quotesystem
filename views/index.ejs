@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quotes system</title>
+    <style>
+      * {
+        text-align: center;
+        padding: 0%;
+      }
+      ul {
+        list-style-type: none;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="/" style="font-size: small">Sign out</a>
+    <h4 style="color: blue; opacity: 0.5">login sucessful!</h4>
+    <h1 style="text-align: center; font-size: 50px">
+      Welcome to Quotes System
+    </h1>
+    <h2>Quotes:</h2>
+    <% if (quotes.length>0) {%>
+    <ul class="quotes">
+      <% for(var i = 0; i < quotes.length; i++) {%>
+      <li class="quote">
+        <a href="/quoteinfo/<%= quotes[i]._id %>">Quote no.<%= i+1 %></a>
+      </li>
+      <% } %>
+    </ul>
+    <%}else{%>
+    <h4 style="color: red">No quotes yet, please insert!</h4>
+    <%}%>
+    <br />
+
+    <h2>Insert your quote here:</h2>
+    <form action="/quotes" , method="POST">
+      <input type="text" placeholder="Your quote" name="quote" />
+      <input type="text" placeholder="Your name" name="name" />
+      <button type="submit">Submit!</button>
+    </form>
+  </body>
+</html>
